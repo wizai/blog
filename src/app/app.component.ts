@@ -3,27 +3,72 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
-    <!--The content below is only a placeholder and can be replaced.-->
-    <div style="text-align:center" class="content">
-      <h1>
-        Welcome to {{title}}!
-      </h1>
-      <span style="display: block">{{ title }} app is running!</span>
-      <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+    <div class="page_homepage fullParent">
+      <div class="page_homepage__user" style="background-image: url('https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80')">
+        <div class="page_homepage__user--infos">
+          <h1>William Nisole</h1>
+          <h2>Junior Front-end developer</h2>
+        </div>
+      </div>
+      <div class="page_homepage__articles fullParent">
+        <div>
+          <article class="page_homepage__article">
+            <p class="page_homepage__article--infos">
+              <span class="page_homepage__article--date">January 2015</span>
+              <span class="page_homepage__article--theme">Work</span>
+            </p>
+            <p class="page_homepage__article--title">Lookbook, a shopify theme</p>
+            <p class="page_homepage__article--description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda atque, autem consectetur corporis error facilis fugiat illo illum incidunt laborum, nesciunt obcaecati quae quis reprehenderit repudiandae, veniam veritatis voluptate! Quasi!</p>
+            <a href="" class="page_homepage__article--link" data-text="Lire">Lire</a>
+          </article>
+          <article class="page_homepage__article">
+            <p class="page_homepage__article--infos">
+              <span class="page_homepage__article--date">January 2015</span>
+              <span class="page_homepage__article--theme">Work</span>
+            </p>
+            <p class="page_homepage__article--title">Lookbook, a shopify theme</p>
+            <p class="page_homepage__article--description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda atque, autem consectetur corporis error facilis fugiat illo illum incidunt laborum, nesciunt obcaecati quae quis reprehenderit repudiandae, veniam veritatis voluptate! Quasi!</p>
+            <a href="" class="page_homepage__article--link" data-text="Lire">Lire</a>
+          </article>
+          <article class="page_homepage__article">
+            <p class="page_homepage__article--infos">
+              <span class="page_homepage__article--date">January 2015</span>
+              <span class="page_homepage__article--theme">Work</span>
+            </p>
+            <p class="page_homepage__article--title">Lookbook, a shopify theme</p>
+            <p class="page_homepage__article--description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda atque, autem consectetur corporis error facilis fugiat illo illum incidunt laborum, nesciunt obcaecati quae quis reprehenderit repudiandae, veniam veritatis voluptate! Quasi!</p>
+            <a href="" class="page_homepage__article--link" data-text="Lire">Lire</a>
+          </article>
+          <article class="page_homepage__article">
+            <p class="page_homepage__article--infos">
+              <span class="page_homepage__article--date">January 2015</span>
+              <span class="page_homepage__article--theme">Work</span>
+            </p>
+            <p class="page_homepage__article--title">Lookbook, a shopify theme</p>
+            <p class="page_homepage__article--description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda atque, autem consectetur corporis error facilis fugiat illo illum incidunt laborum, nesciunt obcaecati quae quis reprehenderit repudiandae, veniam veritatis voluptate! Quasi!</p>
+            <a href="" class="page_homepage__article--link" data-text="Lire">Lire</a>
+          </article>
+          <article class="page_homepage__article">
+            <p class="page_homepage__article--infos">
+              <span class="page_homepage__article--date">January 2015</span>
+              <span class="page_homepage__article--theme">Work</span>
+            </p>
+            <p class="page_homepage__article--title">Lookbook, a shopify theme</p>
+            <p class="page_homepage__article--description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda atque, autem consectetur corporis error facilis fugiat illo illum incidunt laborum, nesciunt obcaecati quae quis reprehenderit repudiandae, veniam veritatis voluptate! Quasi!</p>
+            <a href="" class="page_homepage__article--link" data-text="Lire">Lire</a>
+          </article>
+          <article class="page_homepage__article">
+            <p class="page_homepage__article--infos">
+              <span class="page_homepage__article--date">January 2015</span>
+              <span class="page_homepage__article--theme">Work</span>
+            </p>
+            <p class="page_homepage__article--title">Lookbook, a shopify theme</p>
+            <p class="page_homepage__article--description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda atque, autem consectetur corporis error facilis fugiat illo illum incidunt laborum, nesciunt obcaecati quae quis reprehenderit repudiandae, veniam veritatis voluptate! Quasi!</p>
+            <a href="" class="page_homepage__article--link" data-text="Lire">Lire</a>
+          </article>
+        </div>
+      </div>
     </div>
-    <h2>Here are some links to help you start: </h2>
-    <ul>
-      <li>
-        <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-      </li>
-      <li>
-        <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-      </li>
-      <li>
-        <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-      </li>
-    </ul>
-    <router-outlet></router-outlet>
   `,
   styles: []
 })
