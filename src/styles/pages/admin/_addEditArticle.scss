@@ -1,0 +1,151 @@
+.pageAddEditArticle {
+  margin-top: 5rem;
+  @include flexbox();
+  @include justify-content(space-between);
+  @include flex-flow(row wrap);
+
+  &__row {
+    max-width: 800px;
+    width: 100%;
+    margin: 2.5rem auto 0;
+    text-align: left;
+    position: relative;
+    padding-bottom: 15px;
+    @include flexbox();
+    @include flex-direction(column);
+    @media #{$mobile} {
+      margin: 1.5rem auto 0;
+    }
+
+    &.w50 {
+      width: calc(50% - 20px);
+      margin: 2.5rem 0 0;
+      @media #{$mobile} {
+        width: 100%;
+        margin: 1.5rem auto 0;
+      }
+    }
+
+    &.error {
+      input, textarea {
+        border-color: $red;
+        color: $red;
+      }
+
+      label {
+        color: $red;
+      }
+
+      .pageAddEditArticle__row--error {
+        opacity: 1;
+        @include transform(translate(0));
+      }
+    }
+
+    input, textarea {
+      color: #202124;
+      border: 1px solid #dddddd;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px;
+      font-size: 16px;
+      padding: 10px 15px;
+      z-index: 1;
+      height: 54px;
+      outline: none;
+      width: 100%;
+      font-family: $Circular;
+      resize: none;
+      font-weight: 500;
+      margin-bottom: 10px;
+      @include transition(border-color 150ms cubic-bezier(0.4, 0, 0.2, 1));
+      @include placeholder() {
+        color: #5f6368;
+        font-family: $Circular;
+      }
+
+      &:focus {
+        border-color: $blue;
+
+        & ~ label {
+          color: $blue;
+        }
+      }
+
+      &.ng-touched.ng-invalid, &.ng-invalid.ng-dirty {
+        border-color: $red;
+        color: $red;
+
+        & ~ label {
+          color: $red;
+        }
+
+        & ~ .pageAddEditArticle__row--error {
+          opacity: 1;
+          @include transform(translate(0));
+        }
+      }
+    }
+
+    textarea {
+      height: 100px;
+    }
+
+    label {
+      margin-bottom: 10px;
+      display: block;
+      font-weight: 700;
+      order: -1;
+      @include transition(color 150ms cubic-bezier(0.4, 0, 0.2, 1));
+    }
+
+    &--info {
+      order: -1;
+      font-size: 1.4rem;
+      font-style: italic;
+      margin-top: -10px;
+      margin-bottom: 10px;
+    }
+
+    &--error {
+      color: $red;
+      font-size: 1.2rem;
+      text-align: left;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      opacity: 0;
+      @include transform(translateY(5px));
+      @include transition(all .3s ease-in-out);
+    }
+  }
+
+  &__submit {
+    margin-top: 5rem;
+    width: 100%;
+    text-align: center;
+
+    button {
+      background-color: $blue;
+      color: $white;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px;
+      font-weight: 500;
+      width: 100%;
+      max-width: 130px;
+      margin: 0 5PX;
+      padding: 18px;
+      display: inline-block;
+      border: 0px;
+      font-family: $Circular;
+      outline: none;
+      cursor: pointer;
+      @include box-shadow(0 5px 13px 0 rgba(222, 222, 222, 1));
+      &.reset{
+        background-color: #6c757d;
+      }
+    }
+  }
+}

@@ -1,0 +1,161 @@
+.page_loginCreate{
+  min-height: 100vh;
+  position: relative;
+  @include flexbox();
+  @include align-content(center);
+  @include justify-content(center);
+  &__container{
+    width: 450px;
+    border: 1px solid #dadce0;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    flex-shrink: 0;
+    margin: auto;
+    @media #{$mobile} {
+      width: 100%;
+      border: 0px;
+    }
+  }
+  &__form{
+    text-align: center;
+    padding: 40px;
+    @media #{$mobile} {
+      padding: 20px;
+    }
+    &--title{
+      font-size: 2.4rem;
+      margin-bottom: .8rem;
+    }
+    &--subtitle{
+      font-size: 1.6rem;
+      font-weight: 300;
+      margin-bottom: 5rem;
+    }
+    &--actions{
+      margin-top: 5rem;
+      input[type=submit]{
+        background-color: $blue;
+        color: $white;
+        -webkit-border-radius: 13px;
+        -moz-border-radius: 13px;
+        border-radius: 13px;
+        font-weight: 500;
+        width: 100%;
+        max-width: 250px;
+        margin: 0 auto;
+        padding: 18px;
+        display: block;
+        border: 0px;
+        font-family: $Circular;
+        outline: none;
+        cursor: pointer;
+        @include box-shadow(0 5px 13px 0 rgba(222,222,222,1));
+      }
+      div{
+        font-size: 1.4rem;
+        margin-top: 15px;
+        a{
+          margin-top: 1rem;
+          display: inline-block;
+          color: $blue;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+  &__row{
+    max-width: 250px;
+    margin: 3.5rem auto 0;
+    text-align: left;
+    &--inputLabel{
+      position: relative;
+      margin-bottom: 8px;
+      &.error{
+        input{
+          border-color: $red;
+        }
+        label{
+          color: $red;
+          font-weight: 700;
+          @include transform(scale(0.75) translate(-20px,-35px));
+        }
+        .page_loginCreate__row--error{
+          opacity: 1;
+          @include transform(translate(0));
+        }
+      }
+      input{
+        color: #202124;
+        border: 0px;
+        border-bottom: 2px solid #D8D8D8;
+        font-size: 16px;
+        padding: 10px;
+        z-index: 1;
+        height: 54px;
+        font-weight: 500;
+        outline: none;
+        line-height: 54px;
+        width: 100%;
+        font-family: $Circular;
+        background-color: $white !important;
+        @include transition(border-color 150ms cubic-bezier(0.4,0,0.2,1));
+        &:not(:placeholder-shown){
+          border-color: #D8D8D8;
+          & + label{
+            color: #80868b;
+            @include transform(scale(0.75) translate(-15px,-35px));
+          }
+        }
+        &:focus {
+          border-color: $blue;
+          & + label{
+            color: $blue;
+            @include transform(scale(0.75) translate(-15px,-35px));
+          }
+        }
+        &.ng-touched.ng-invalid, &.ng-invalid.ng-dirty {
+          border-color: $red;
+          & ~ label{
+            color: $red;
+            font-weight: 700;
+            @include transform(scale(0.75) translate(-15px,-35px));
+          }
+          & ~ .page_loginCreate__row--error{
+            opacity: 1;
+            @include transform(translate(0));
+          }
+        }
+      }
+      label{
+        position: absolute;
+        bottom: 17px;
+        left: 10px;
+        color: #D8D8D8;
+        font-family: $Circular;
+        font-size: 1.6rem;
+        max-width: calc(100% - (2*8px));
+        overflow: hidden;
+        -ms-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: auto;
+        z-index: 1;
+        display: block;
+        @include transition(transform 150ms cubic-bezier(0.4,0,0.2,1),opacity 150ms cubic-bezier(0.4,0,0.2,1));
+      }
+    }
+    &--error{
+      color: $red;
+      font-size: 1.2rem;
+      text-align: left;
+      position: absolute;
+      bottom: -20px;
+      left: 0;
+      width: 100%;
+      opacity: 0;
+      @include transform(translateY(5px));
+      @include transition(all .3s ease-in-out);
+    }
+  }
+}

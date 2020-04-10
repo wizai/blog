@@ -1,15 +1,25 @@
+// Module
+@import "~simplemde/dist/simplemde.min.css";
+@import "~angular-notifier/styles";
+
 // Theme Blog
 @import "styles/partials/reset";
 @import "styles/partials/variables";
 @import "styles/partials/mixins";
 @import "styles/partials/commons";
+@import "styles/partials/animations";
 
 // Theme Blog - Library
 
+// Theme Blog - Components
+@import "styles/components/articleComponent";
 
 // Theme Blog - Pages
 @import "styles/pages/homepage";
+@import "styles/pages/article_detail";
+@import "styles/pages/loginCreate";
+@import "styles/pages/notFound";
 
-
-// Theme Blog - Components
-
+@import "styles/pages/admin";
+@import "styles/pages/admin/listing-articles";
+@import "styles/pages/admin/addEditArticle";

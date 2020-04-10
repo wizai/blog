@@ -1,0 +1,47 @@
+<div class="page_loginCreate">
+    <div class="page_loginCreate__container">
+        <form (submit)="onSignup(signupForm)" #signupForm="ngForm" class="page_loginCreate__form">
+            <h1 class="page_loginCreate__form--title">Créer un compte</h1>
+            <h2 class="page_loginCreate__form--subtitle">Créer votre blog</h2>
+            <div class="page_loginCreate__row">
+                <div class="page_loginCreate__row--inputLabel" [ngClass]="{ 'error': submitted && create_mail.invalid }">
+                    <input
+                            type="email"
+                            id="create_mailInput"
+                            #create_mail="ngModel"
+                            ngModel
+                            required
+                            email
+                            placeholder=" "
+                            name="create_mail">
+                    <label for="create_mailInput">Adresse e-mail</label>
+                    <span class="page_loginCreate__row--error" *ngIf="create_mail.invalid">Adresse e-mail invalide</span>
+                </div>
+            </div>
+            <div class="page_loginCreate__row">
+                <div class="page_loginCreate__row--inputLabel" [ngClass]="{ 'error': submitted && create_password.invalid }">
+                    <input
+                            type="password"
+                            id="create_passwordInput"
+                            #create_password="ngModel"
+                            ngModel
+                            required
+                            placeholder=" "
+                            name="create_password">
+                    <label for="create_passwordInput">Mot de passe</label>
+                    <span class="page_loginCreate__row--error" *ngIf="create_password.invalid">Mot de passe incorrect</span>
+                </div>
+            </div>
+            <div class="page_loginCreate__form--actions">
+                <input
+                        type="submit"
+                        value="Créer un compte">
+                <div>
+                    <span>Vous avez déjà un compte ? </span>
+                    <a routerLink="/auth/login">Se connecter</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div *ngIf=""></div>

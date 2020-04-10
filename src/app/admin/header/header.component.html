@@ -1,0 +1,11 @@
+<header class="headerAdmin">
+    <div class="headerAdmin__container">
+        <p class="headerAdmin__title">William Nisole</p>
+        <!--<a *ngIf="userIsAuthenticated" href="" class="headerAdmin__logout">Se déconnecter</a>-->
+        <a href="javascript:void(0)" class="headerAdmin__logout" (click)="onLogout()">Se déconnecter</a>
+        <a routerLink="/admin/add" class="headerAdmin__addArticle">
+            <span>Ajouter un article</span>
+            <i>+</i>
+        </a>
+    </div>
+</header>

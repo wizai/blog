@@ -1,0 +1,8 @@
+.page_adminListingArticles{
+  &__articles{
+    margin-top: 7rem;
+    @media #{$mobile} {
+      margin-top: 3rem;
+    }
+  }
+}

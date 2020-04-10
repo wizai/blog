@@ -1,0 +1,20 @@
+<div class="page_articleDetail fullParent">
+    <div class="page_articleDetail__imgs" style="background-image: url('https://images.unsplash.com/photo-1497551060073-4c5ab6435f12?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=667&q=80')">
+        <a routerLink="" class="page_articleDetail__imgs--goBack" data-text="Lire">&#10005;</a>
+        <div class="page_articleDetail__imgs--zoom">
+            <img *ngFor="let img of imgs" src="{{img}}">
+        </div>
+    </div>
+    <div class="page_articleDetail__article fullParent" #articleContent>
+       <p class="page_articleDetail__article--infos">
+           <span class="page_articleDetail__article--date">{{ article?.date | date:'MMMM, y ': '' : 'fr-FR' }}</span>
+           <span class="page_articleDetail__article--theme">{{ article?.category }}</span>
+       </p>
+        <h1>{{ article?.title }}</h1>
+        <markdown [data]="article?.content" (ready)="onReady()"></markdown>
+        <!--<blockquote cite="http://google.com" itemprop="citation" role="presentation">
+            <p>Bonjour merci pour votre live comme on risque de tourner chèvre à rester en 4 murs je propose qu en plus de programmes d instructions il y aussi le retour des cours de Fitness et d’aérobic sur le service public. Personnellement et dans l’attente je redécouvre les jeux de danse sur console...courage</p>
+            <cite>Luke Whelan</cite>
+        </blockquote>-->
+    </div>
+</div>

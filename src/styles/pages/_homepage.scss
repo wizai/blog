@@ -1,6 +1,9 @@
 .page_homepage{
   @include flexbox();
   @include justify-content(flex-end);
+  @media #{$tablet} {
+    @include flex-flow(row wrap);
+  }
   &__user{
     width: 50%;
     height: 100%;
@@ -9,26 +12,73 @@
     @include transform(translateY(-50%));
     overflow: hidden;
     position: fixed;
-    order: 2;
     background-size: cover;
     background-position: center center;
     @include flexbox();
     @include align-items(center);
     @include flex-flow(column wrap);
     @include justify-content(flex-end);
+    @media #{$tablet} {
+      width: 100%;
+      position: inherit;
+      top: inherit;
+      height: 400px;
+      left: inherit;
+      @include transform(inherit);
+      @include flex-flow(row wrap);
+    }
     &--infos{
       margin-top: auto;
       color: $white;
       text-align: center;
       padding-bottom: 50px;
+      @include text-shadow();
+      @media #{$tablet} {
+        width: 100%;
+        background-color: $white;
+        color: $black;
+        padding: 20px;
+        margin: auto auto 0;
+        max-width: calc(100% - 5vw);
+        text-shadow: inherit;
+      }
+      @media #{$mobile} {
+        max-width: calc(100% - 20px);
+        padding: 15px;
+      }
+      h1{
+        font-size: 4rem;
+        @media #{$mobile} {
+          font-size: 3rem;
+        }
+      }
+      h2{
+        font-size: 14px;
+        text-transform: uppercase;
+        font-weight: 300;
+        margin-top: 5px;
+        @media #{$tablet} {
+          font-weight: 500;
+        }
+        @media #{$mobile} {
+          margin-top: 0;
+        }
+      }
     }
   }
   &__articles{
     width: 50%;
     padding: 150px 5vw 5vw;
     position: relative;
+    @include animation( moveToTop .5s cubic-bezier(0.2, 1, 0.3, 1) forwards);
 
-    @import "../components/homepage_article";
+    @media #{$tablet} {
+      width: 100%;
+      padding: 20px 5vw 0;
+    }
+    @media #{$mobile} {
+      padding: 50px 5vw 0;
+    }
 
   }
 }

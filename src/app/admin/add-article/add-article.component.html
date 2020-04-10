@@ -1,0 +1,61 @@
+<form (submit)="onSubmitArticle()"  [formGroup]="form">
+    <a routerLink="/admin" class="pageAdmin__goBack">< Retour</a>
+    <h1 class="pageAdmin__title">Création d'un article</h1>
+    <p class="pageAdmin__subtitle">Vous être en train d'écrire un article</p>
+    <div class="pageAddEditArticle">
+        <div class="pageAddEditArticle__row w50"
+                [ngClass]="{ 'error': submitted && f.title.errors }" >
+            <input
+                    type="text"
+                    id="article_title"
+                    name="article_title"
+                    placeholder="Mon premier article"
+                    formControlName="title">
+            <label for="article_title">Titre de l'article</label>
+            <span class="pageAddEditArticle__row--error" *ngIf="form.get('title')">Nom de l'article incorrect</span>
+        </div>
+        <div class="pageAddEditArticle__row w50"
+             [ngClass]="{ 'error': submitted && f.category.errors }" >
+            <input
+                    type="text"
+                    id="article_category"
+                    name="article_category"
+                    placeholder="Le sport"
+                    formControlName="category">
+            <label for="article_category">Thème de l'article</label>
+            <span class="pageAddEditArticle__row--error" *ngIf="form.get('category')">Nom de la category incorrecte</span>
+        </div>
+        <div class="pageAddEditArticle__row"
+             [ngClass]="{ 'error': submitted && f.description.errors }" >
+            <textarea
+                    id="article_description"
+                    name="article_description"
+                    cols="30"
+                    rows="10"
+                    placeholder="Voici mon premier article sur le sport"
+                    formControlName="description">
+            </textarea>
+            <label for="article_description">Description de l'article</label>
+            <span class="pageAddEditArticle__row--error" *ngIf="form.get('description')">Description trop longue</span>
+        </div>
+        <div class="pageAddEditArticle__row "
+             [ngClass]="{ 'error': submitted && f.content.errors }" >
+            <simplemde formControlName="content"></simplemde>
+            <!--<textarea
+                    id="Addarticle_content"
+                    class="simplemde"
+                    name="article_content"
+                    cols="30"
+                    rows="10"
+                    placeholder="# Mon premier article de blog (h1)"
+                    formControlName="content">
+            </textarea>-->
+            <label for="Addarticle_content">Contenu de l'article</label>
+            <span class="pageAddEditArticle__row--info">Il s'agit WYSIWYG en Markdown</span>
+            <span class="pageAddEditArticle__row--error" *ngIf="form.get('content')">Contenu de l'article invalide</span>
+        </div>
+        <div class="pageAddEditArticle__submit">
+            <button type="submit">Enregister</button>
+        </div>
+    </div>
+</form>

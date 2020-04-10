@@ -1,0 +1,19 @@
+<div class="page_homepage fullParent">
+    <div class="page_homepage__user" style="background-image: url('https://images.unsplash.com/photo-1497551060073-4c5ab6435f12?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=667&q=80')">
+        <div class="page_homepage__user--infos">
+            <h1>William Nisole</h1>
+            <h2>Junior Front-end developer</h2>
+        </div>
+    </div>
+    <div class="page_homepage__articles fullParent">
+        <article *ngFor="let article of articles" class="articleComponent">
+            <p class="articleComponent__infos">
+                <span class="articleComponent__date">{{ article.date | date:'MMMM, y ': '' : 'fr-FR' }}</span>
+                <span class="articleComponent__theme">{{ article.category }}</span>
+            </p>
+            <p class="articleComponent__title">{{ article.title }}</p>
+            <p class="articleComponent__description">{{ article.description }}</p>
+            <a [routerLink]="['/article', article.id]" class="articleComponent__link" data-text="Lire">Lire</a>
+        </article>
+    </div>
+</div>

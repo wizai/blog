@@ -1,0 +1,32 @@
+/**
+ * ----------------------------------------
+ * animation MoToTop
+ * ----------------------------------------
+ */
+@include keyframes(moveToTop){
+  0%,
+  65% {
+    opacity: 0;
+    @include transform(translate3d(0, 5px, 0));
+  }
+  100% {
+    @include transform(translate3d(0, 0, 0));
+  }
+}
+
+/**
+ * ----------------------------------------
+ * animation pulsate-fwd
+ * ----------------------------------------
+ */
+@include keyframes(pulsate-fwd){
+  0% {
+    @include transform(scale(1))
+  }
+  50% {
+    @include transform(scale(1.05))
+  }
+  100% {
+    @include transform(scale(1))
+  }
+}
