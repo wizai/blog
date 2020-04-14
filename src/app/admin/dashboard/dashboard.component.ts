@@ -45,9 +45,12 @@ export class DashboardComponent implements OnInit, OnDestroy {
             });
     }
 
-    onDelete(articleId: string) {
+    onDelete(articleId: string, article) {
+        article.remove = !article.remove;
         this.isLoading = true;
-        this.articlesService.deleteArticle(articleId);
+        setTimeout(()=> {
+            this.articlesService.deleteArticle(articleId);
+        }, 500);
     }
 
     ngOnDestroy() {

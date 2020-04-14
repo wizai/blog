@@ -1,10 +1,8 @@
 import {
     AfterViewChecked,
-    AfterViewInit, ChangeDetectorRef,
-    Component, ElementRef,
+    Component,
     HostListener, Inject,
-    OnDestroy,
-    OnInit, ViewChild
+    OnInit, ChangeDetectorRef, ViewEncapsulation
 } from '@angular/core';
 import {ActivatedRoute, ParamMap} from "@angular/router";
 import {DOCUMENT, registerLocaleData} from '@angular/common';
@@ -12,7 +10,6 @@ import localeFr from '@angular/common/locales/fr';
 
 import {ArticlesService} from "../article.service";
 import {Article} from "../article.model";
-import {MarkdownService} from "ngx-markdown";
 
 registerLocaleData(localeFr, 'fr');
 
@@ -21,20 +18,18 @@ registerLocaleData(localeFr, 'fr');
     templateUrl: './article-detail.component.html',
     styles: []
 })
-export class ArticleDetailComponent implements OnInit, OnDestroy {
-
-    @ViewChild('articleContent') element :ElementRef;
+export class ArticleDetailComponent implements OnInit, AfterViewChecked {
 
     isLoading = false;
     article: Article;
-    imgs: any[];
+    articleImgs: any[];
     private articleId: string;
 
     constructor(
         public articlesService: ArticlesService,
         public route: ActivatedRoute,
-        private changeDetectorRef: ChangeDetectorRef,
-        @Inject(DOCUMENT) private document: Document
+        private cdRef:ChangeDetectorRef,
+        @Inject(DOCUMENT) private document: Document,
     ) {
     }
 
@@ -53,33 +48,52 @@ export class ArticleDetailComponent implements OnInit, OnDestroy {
                     content: postData.content,
                     creator: postData.creator,
                 };
+                this.insertImg(this.article.content)
             });
         });
     }
 
-    ngOnDestroy() {
-        //
+
+    ngAfterViewChecked(){
+        this.cdRef.detectChanges();
     }
 
-    @HostListener('window:scroll', ['$event'])
-    scrollZoom(){
-        let scrollPos = window.scrollY;
-        console.log(scrollPos)
-    }
-
-    onReady(){
-        let images = this.document.querySelectorAll('img');
-        this.changeDetectorRef.detectChanges();
+    insertImg(articleMarkdownContent){
+        let m;
         let srcList = [];
-        if (images.length){
-           for(let i = 0; i < images.length; i++) {
-               srcList.push(images[i]);
-               // this.imgs.push(images[i]);
-           }
+        const regex = /!\[(.*?)\]\((.*?)\)/g;
+        var printResult = ( array) => {
+            var url = array[2];
+            srcList.push(url);
+        };
+        while ((m = regex.exec(articleMarkdownContent)) !== null) {
+            if (m.index === regex.lastIndex) {
+                regex.lastIndex++;
+            }
+            printResult(m);
         }
-        this.imgs = srcList;
-        console.log(srcList);
-        console.log(this.imgs)
+        this.articleImgs = srcList;
+    }
+    @HostListener('window:scroll', ['$event'])
+    onScroll(toto){
+        let scroll = window.scrollY;
+        this.scrollZoom(scroll);
     }
 
+    scrollZoom(Wscroll){
+        let screenHeight = window.screen.height;
+        let images = this.document.querySelectorAll('.page_articleDetail__article img');
+        Object.entries(images).map(( key, index ) => {
+            let posImg = images[index].parentElement.offsetTop - (screenHeight /2);
+            if(Wscroll >posImg ){
+                let $imgs =this.document.querySelectorAll('.page_articleDetail__imgs--zoom  div');
+                let $this = this.document.querySelector('.page_articleDetail__imgs--zoom  div:nth-child('+ (index+1) +')');
+                for (var i = 0; i < $imgs.length; i++) {
+                    $imgs[i].classList.remove('active');
+                }
+                $this.classList.add('active')
+            }
+        });
+
+    }
 }

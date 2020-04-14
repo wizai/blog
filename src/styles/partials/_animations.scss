@@ -30,3 +30,22 @@
     @include transform(scale(1))
   }
 }
+/**
+ * ----------------------------------------
+ * animation slide-out-blurred-right
+ * ----------------------------------------
+ */
+@include keyframes(slide-out-blurred-left){
+  0% {
+    opacity: 1;
+    @include transform(translateX(0) scaleY(1) scaleX(1));
+    @include trOrigin(50%, 50%);
+    @include filter(blur(0));
+  }
+  100% {
+    opacity: 0;
+    @include transform(translateX(-1000px) scaleX(2) scaleY(0.2));
+    @include trOrigin(100%, 50%);
+    @include filter(blur(40px));
+  }
+}

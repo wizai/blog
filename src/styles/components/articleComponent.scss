@@ -1,6 +1,9 @@
 .articleComponent{
   margin-bottom: 70px;
   position: relative;
+  &.removed{
+    @include animation(slide-out-blurred-left 0.45s cubic-bezier(0.755, 0.050, 0.855, 0.060) both);
+  }
   &:last-of-type{
     margin-bottom: 0px;
   }
@@ -92,14 +95,13 @@
     }
     &--edit{
       color: $blue;
-      margin-left: 2rem;
+      margin: 0 2rem;
       &:after{
         background-color: $blue;
       }
     }
     &--show{
       color: $black;
-      margin-left: 2rem;
       &:after{
         background-color: $black;
       }

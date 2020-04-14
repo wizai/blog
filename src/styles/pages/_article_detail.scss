@@ -12,22 +12,39 @@
     @include transform(translateY(-50%));
     overflow: hidden;
     position: fixed;
-    background-size: cover;
-    background-position: center center;
-    @media #{$tablet} {
-      width: 100%;
-      position: inherit;
-      top: inherit;
-      height: 400px;
-      left: inherit;
-      @include transform(inherit);
-    }
-    @media #{$mobile} {
-      height: 250px;
-    }
     &--zoom{
       position: relative;
       overflow: hidden;
+      div{
+        position: fixed;
+        top: 0%;
+        left: 50%;
+        max-width: 200%;
+        height: 100%;
+        width: 100%;
+        z-index: -1;
+        opacity: 0;
+        background-size: cover;
+        background-position: center center;
+        @include transform(translateX(-50%));
+        @include transition(opacity 2s cubic-bezier(.23,1,.32,1));
+        will-change: -webkit-filter, filter, transform;
+        &.active{
+          z-index: 10;
+          opacity: 1;
+        }
+        @media #{$tablet} {
+          width: 100%;
+          position: inherit;
+          top: inherit;
+          height: 400px;
+          left: inherit;
+          @include transform(inherit);
+        }
+        @media #{$mobile} {
+          height: 250px;
+        }
+      }
     }
     &--goBack{
       background-color: $white;
@@ -37,6 +54,7 @@
       line-height: 40px;
       font-weight: 700;
       color: $black;
+      z-index: 30;
       display: inline-block;
       -webkit-border-radius: 100%;
       -moz-border-radius: 100%;
@@ -142,14 +160,23 @@
       margin-top: 1rem;
       line-height: 2.5rem;
       font-weight: 300;
+      position: relative;
+      overflow: hidden;
       @media #{$mobile} {
         font-size: 1.4rem;
+      }
+      img{
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        visibility: hidden;
       }
     }
     strong, b{
       font-weight: 900;
     }
-    figure, img{
+    figure{
       margin-top: 2.5rem;
       text-align: center;
       display: block;

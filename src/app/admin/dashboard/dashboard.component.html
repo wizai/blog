@@ -2,7 +2,7 @@
     <h1 class="pageAdmin__title">Admin - Articles</h1>
     <span class="pageAdmin__subtitle">Liste de tous les articles</span>
     <div class="page_adminListingArticles__articles">
-        <article *ngFor="let article of articles" class="articleComponent">
+        <article *ngFor="let article of articles" class="articleComponent" [ngClass]="{'removed': article.remove}">
             <p class="articleComponent__infos">
                 <span class="articleComponent__date">{{ article.date | date:'MMMM, y ': '' : 'fr-FR' }}</span>
                 <!--<span class="articleComponent__date">{{ article.date | date:'MMMM d, y, h:mm:ss': '' : 'fr-FR' }}</span>-->
@@ -10,13 +10,13 @@
             </p>
             <p class="articleComponent__title">{{ article.title }}</p>
             <p class="articleComponent__description">{{ article.description }}</p>
-            <div class="articleComponent__actions" *ngIf="userIsAuthenticated && userId == article.creator">
+            <div class="articleComponent__actions">
             <!--<div class="articleComponent__actions">-->
-                <a href="javascript:void(0)" class="articleComponent__actions--delete" (click)="onDelete(article.id)">
+                <a href="javascript:void(0)" class="articleComponent__actions--delete" (click)="onDelete(article.id, article)" *ngIf="userIsAuthenticated && userId == article.creator">
                     <i class="icon-delete"></i>
                     <span>Supprimer</span>
                 </a>
-                <a [routerLink]="['/admin/edit', article.id]" class="articleComponent__actions--edit">
+                <a [routerLink]="['/admin/edit', article.id]" class="articleComponent__actions--edit" *ngIf="userIsAuthenticated && userId == article.creator">
                     <i class="icon-edit"></i>
                     <span>Modifier</span>
                 </a>
