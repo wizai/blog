@@ -10,6 +10,7 @@ import localeFr from '@angular/common/locales/fr';
 
 import {ArticlesService} from "../article.service";
 import {Article} from "../article.model";
+import {MarkdownService} from "ngx-markdown";
 
 registerLocaleData(localeFr, 'fr');
 
@@ -29,6 +30,7 @@ export class ArticleDetailComponent implements OnInit, AfterViewChecked {
         public articlesService: ArticlesService,
         public route: ActivatedRoute,
         private cdRef:ChangeDetectorRef,
+        private markdownService: MarkdownService,
         @Inject(DOCUMENT) private document: Document,
     ) {
     }
@@ -51,6 +53,9 @@ export class ArticleDetailComponent implements OnInit, AfterViewChecked {
                 this.insertImg(this.article.content)
             });
         });
+        this.markdownService.renderer.link = (href, title, text) => {
+            return '<a name="' + title + '" class="anchor" href="' + href + '" target="_blank">' + text + '</a>'
+        };
     }
 
 
